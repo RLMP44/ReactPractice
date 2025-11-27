@@ -1,5 +1,5 @@
 import React from "react";
-import Form from "./Form";
+import Login from "./Login";
 
 var isLoggedIn = false;
 
@@ -7,7 +7,7 @@ function renderConditionally() {
   if (isLoggedIn) {
     return <h1>Hello</h1>;
   } else {
-    return <Form />;
+    return <Login />;
   }
 }
 
