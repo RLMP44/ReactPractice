@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function App() {
-  // starting value/state in parenthesis, returns an array
+  // starting value/state in parenthesis
   //   const state = useState(0);
   //   console.log(state[0]);
   // to avoid getting elements by rbg[0], rgb[1], etc
