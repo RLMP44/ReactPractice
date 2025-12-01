@@ -4,10 +4,17 @@ import ReactDom from "react-dom/client";
 import cars from "./cars.js";
 
 const [honda, tesla] = cars;
-const hondaTopSpeed = honda.speedStats["topSpeed"];
-const teslaTopSpeed = tesla.speedStats["topSpeed"];
-const hondaTopColour = honda.coloursByPopularity[0];
-const teslaTopColour = tesla.coloursByPopularity[0];
+// don't have to destructure everything, can leave out the ones you want
+// destructured objects must use key names as-is then re-assign var name if desired
+// arrays can be renamed immediately
+const {
+  colorsByPopularity: [hondaTopColor],
+  speedStats: { topSpeed: hondaTopSpeed },
+} = honda;
+const {
+  colorsByPopularity: [teslaTopColor],
+  speedStats: { topSpeed: teslaTopSpeed },
+} = tesla;
 
 const root = ReactDom.createRoot(document.getElementById("root"));
 root.render(
@@ -15,16 +22,17 @@ root.render(
     <tr>
       <th>Brand</th>
       <th>Top Speed</th>
+      <th>Top Color</th>
     </tr>
     <tr>
       <td>{tesla.model}</td>
       <td>{teslaTopSpeed}</td>
-      <td>{teslaTopColour}</td>
+      <td>{teslaTopColor}</td>
     </tr>
     <tr>
       <td>{honda.model}</td>
       <td>{hondaTopSpeed}</td>
-      <td>{hondaTopColour}</td>
+      <td>{hondaTopColor}</td>
     </tr>
   </table>
 );
