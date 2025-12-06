@@ -7,18 +7,20 @@ function App() {
   });
 
   function handleChange(event) {
-    const newValue = event.target.value;
-    const inputName = event.target.name;
+    // const value = event.target.value;
+    // const name = event.target.name;
+    // can destructure like below
+    const { value, name } = event.target;
     setFullName((previousValue) => {
-      if (inputName === "fName") {
+      if (name === "fName") {
         return {
-          fName: newValue,
+          fName: value,
           lName: previousValue.lName,
         };
-      } else if (inputName === "lName") {
+      } else if (name === "lName") {
         return {
           fName: previousValue.fName,
-          lName: newValue,
+          lName: value,
         };
       }
     });
