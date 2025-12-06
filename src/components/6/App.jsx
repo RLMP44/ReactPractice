@@ -2,14 +2,15 @@ import React, { useState } from "react";
 
 function App() {
   const [headingText, setHeadingText] = useState("Hello");
+  const [isMouseOver, setMouseOver] = useState(false);
   function handleClick() {
     setHeadingText("Submitted");
   }
-  function backgroundBlack() {
-    document.getElementById("submitbutton").style.backgroundColor = "black";
+  function handleMouseOver() {
+    setMouseOver(true);
   }
-  function backgroundWhite() {
-    document.getElementById("submitbutton").style.backgroundColor = "white";
+  function handleMouseOut() {
+    setMouseOver(false);
   }
 
   return (
@@ -17,10 +18,12 @@ function App() {
       <h1>{headingText}</h1>
       <input type="text" placeholder="What's your name?" />
       <button
-        id="submitbutton"
+        style={{
+          backgroundColor: isMouseOver ? "black" : "white",
+        }}
         onClick={handleClick}
-        onMouseOver={backgroundBlack}
-        onMouseOut={backgroundWhite}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
       >
         Submit
       </button>
