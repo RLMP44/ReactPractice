@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import TodoItem from "./TodoItem";
 // 1. when new text is written into the input, its state should be saved
 // 2. when the add button is pressed, the current data in ht einput should be added to an array
 // 3. the <ul> should display all of the array items as <li>s
 
-function Practice() {
+function App() {
   const [inputText, setInputText] = useState("");
   const [todos, setTodos] = useState([]);
 
@@ -33,7 +34,7 @@ function Practice() {
       <div>
         <ul>
           {todos.map((todo) => (
-            <li>{todo}</li>
+            <TodoItem item={todo} />
           ))}
         </ul>
       </div>
@@ -41,4 +42,4 @@ function Practice() {
   );
 }
 
-export default Practice;
+export default App;
