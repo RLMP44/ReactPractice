@@ -13,11 +13,19 @@ function App() {
     setInputText(input);
   }
 
-  function updateList() {
+  function addItem() {
     setTodos((prevValues) => {
       return [...prevValues, inputText];
     });
     setInputText("");
+  }
+
+  function deleteItem(id) {
+    setTodos((prevValues) => {
+      return prevValues.filter((value, index) => {
+        return index !== id;
+      });
+    });
   }
 
   return (
@@ -27,14 +35,19 @@ function App() {
       </div>
       <div className="form">
         <input onChange={handleChange} type="text" value={inputText} />
-        <button onClick={updateList}>
+        <button onClick={addItem}>
           <span>Add</span>
         </button>
       </div>
       <div>
         <ul>
-          {todos.map((todo) => (
-            <TodoItem item={todo} />
+          {todos.map((todo, index) => (
+            <TodoItem
+              key={index}
+              id={index}
+              item={todo}
+              onChecked={deleteItem}
+            />
           ))}
         </ul>
       </div>
