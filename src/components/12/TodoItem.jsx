@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 
 function TodoItem(props) {
-  var [crossedOff, setCrossedOff] = useState(false);
+  var [isDone, setisDone] = useState(false);
 
   function handleClick() {
-    setCrossedOff(crossedOff ? false : true);
+    setisDone((prevValue) => {
+      return !prevValue;
+    });
   }
 
   return (
     <li
       onClick={handleClick}
-      style={{ textDecoration: crossedOff ? "line-through" : "" }}
+      style={{ textDecoration: isDone ? "line-through" : "" }}
     >
       {props.item}
     </li>
