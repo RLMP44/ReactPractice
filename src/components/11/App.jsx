@@ -4,8 +4,6 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [todo, setTodo] = useState("");
 
-  let nextID = 0;
-
   function handleChange(event) {
     // only one input, so no destructuring needed
     const value = event.target.value;
